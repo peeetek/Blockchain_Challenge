@@ -4,28 +4,62 @@
 
 You’re a fintech engineer who’s working at one of the five largest banks in the world. You were recently promoted to act as the lead developer on their decentralized finance team. Your task is to build a blockchain-based ledger system, complete with a user-friendly web interface. This ledger should allow partner banks to conduct financial transactions (that is, to transfer money between senders and receivers) and to verify the integrity of the data in the ledger.
 
-You’ll make the following updates to the provided Python file for this assignment, which already contains the basic `PyChain` ledger structure that you created throughout the module:
-
-1. Create a new data class named `Record`. This class will serve as the blueprint for the financial transaction records that the blocks of the ledger will store.
-
-2. Modify the existing `Block` data class to store `Record` data.
-
-3. Add Relevant User Inputs to the Streamlit interface.
-
-4. Test the PyChain Ledger by Storing Records.
-
 ---
-## Files
 
-Download the following files to help you get started:
+## Project Requirements
 
-[Module 18 Homework files](Starter_Code/pychain.py)
+To run the PyChain Ledger application, you need to have the following:
+
+- Python 3.7
+- Streamlit framework
+- Panads Library
+- Date Classes
+- Typing
+- Hashlib
 
 ---
 
-## Instructions
+## Project Structure
 
-Open the [`pychain.py` file](Starter_Code/pychain.py) included in the Homework's `Starter_code` folder. You’ll use this file to complete the steps for this assignment. Notice that the `PyChain` ledger that you built throughout this unit already includes the functionality to create blocks, perform the proof of work consensus protocol, and validate blocks in the chain.
+- 'pychain.py' contains the main code for the PyChain ledger implementation.
+- 'README.md' provides an overview of the project, its requirements, and how to run the application.
+- 'Images' directory contains screenshots of the application's interface for reference.
+
+---
+
+## Using the PyChain Ledger Application
+
+In the PyChain Ledger application, Streamlit is used to create the web interface that allows users to interact with the blockchain. The interface includes input areas for the sender, receiver, and amount values, as well as buttons to add blocks to the blockchain and validate the chain
+
+To use the PyChain Ledger application, follow these steps:
+
+1. Clone the repository to your local machine.
+
+2. Navigate to the project directory and install the required libraries by running the following command:
+
+`pip install streamlit`
+
+3. Run the application by running the following command:
+
+`streamlit run pychain.py`
+
+4. The PyChain Ledger application will open in your default web browser. Enter the sender, receiver, and amount values, and then click the "Add Block" button to add the transaction to the blockchain. The block details, including the hash, will appear on the screen.
+
+![pychain](Images/pychain.png)
+
+5. To validate the blockchain, click the "Validate Chain" button. A message will appear indicating whether the blockchain is valid or not.
+
+![validation](Images/validation.png)
+
+## Additional Information
+
+- The difficulty level of the proof-of-work algorithm can be adjusted using the slider in the sidebar. A higher difficulty level means more computational power is required to mine a block, making the blockchain more secure.
+
+- The sidebar also includes a block inspector, which allows you to view the details of any block in the chain by selecting it from the dropdown menu.
+
+---
+
+## Project Details
 
 The steps for this assignment are divided into the following sections:
 
@@ -39,65 +73,16 @@ The steps for this assignment are divided into the following sections:
 
 ### Step 1: Create a Record Data Class
 
-Define a new Python data class named `Record`. Give this new class a formalized data structure that consists of the `sender`, `receiver`, and `amount` attributes. To do so, complete the following steps:
-
-1. Define a new class named `Record`.
-
-2. Add the `@dataclass` decorator immediately before the `Record` class definition.
-
-3. Add an attribute named `sender` of type `str`.
-
-4. Add an attribute named `receiver` of type `str`.
-
-5. Add an attribute named `amount` of type `float`.
-
-Note that you’ll use this new `Record` class as the data type of your `record` attribute in the next section.
+Define a new Python data class named `Record`. Give this new class a formalized data structure that consists of the `sender`, `receiver`, and `amount` attributes.
 
 ### Step 2: Modify the Existing Block Data Class to Store Record Data
 
-Rename the `data` attribute in your `Block` class to `record`, and then set it to use an instance of the new `Record` class that you created in the previous section. To do so, complete the following steps:
-
-1. In the `Block` class, rename the `data` attribute to `record`.
-
-2. Set the data type of the `record` attribute to `Record`.
+Rename the `data` attribute in your `Block` class to `record`, and then set it to use an instance of the new `Record` class that you created in the previous section.
 
 ### Step 3: Add Relevant User Inputs to the Streamlit Interface
 
-Code additional input areas for the user interface of your Streamlit application. Create these input areas to capture the sender, receiver, and amount for each transaction that you’ll store in the `Block` record. To do so, complete the following steps:
-
-1. Delete the `input_data` variable from the Streamlit interface.
-
-2. Add an input area where you can get a value for `sender` from the user.
-
-3. Add an input area where you can get a value for `receiver` from the user.
-
-4. Add an input area where you can get a value for `amount` from the user.
-
-5. As part of the “Add Block” button functionality, update `new_block` so that `Block` consists of an attribute named `record`, which is set equal to a `Record` that contains the `sender`, `receiver`, and `amount` values. The updated `Block` should also include the attributes for `creator_id` and `prev_hash`.
+Code additional input areas for the user interface of your Streamlit application. Create these input areas to capture the sender, receiver, and amount for each transaction that you’ll store in the `Block` record.
 
 ### Step 4: Test the PyChain Ledger by Storing Records
 
-Test your complete `PyChain` ledger and user interface by running your Streamlit application and storing some mined blocks in your `PyChain` ledger. Then test the blockchain validation process by using your `PyChain` ledger. To do so, complete the following steps:
-
-1. In the terminal, navigate to the project folder where you've coded this assignment.
-
-2. In the terminal, run the Streamlit application by using `streamlit run pychain.py`.
-
-3. Enter values for the sender, receiver, and amount, and then click the Add Block button. Do this several times to store several blocks in the ledger.
-
-4. Verify the block contents and hashes in the Streamlit dropdown menu. Take a screenshot of the Streamlit application page, which should detail a blockchain that consists of multiple blocks. Include the screenshot in the `README.md` file for your GitHub repository.
-
-5. Test the blockchain validation process by using the web interface. Take a screenshot of the Streamlit application page, which should indicate the validity of the blockchain. Include the screenshot in the `README.md` file for your homework repository.
-
----
-## Submission
-
-You’ll upload the Python file for this assignment to your GitHub repository.
-
-* Make sure to update the `README.md` file to include an explanation of the Steamlit application, a screenshot or video of your deployed Streamlit application, and any other information that’s needed to interact with your project.
-
-* Submit the link to your GitHub project to Bootcamp Spot.
-
----
-
-© 2021 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+Test your complete `PyChain` ledger and user interface by running your Streamlit application and storing some mined blocks in your `PyChain` ledger. Then test the blockchain validation process by using your `PyChain` ledger.
